@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App -->
+    <string name="app_name">HTA</string>
+
+    <!-- Tabs -->
+    <string name="tab_home">Home</string>
+    <string name="tab_input">Input</string>
+    <string name="tab_graph">Graph</string>
+    <string name="tab_table">Table</string>
+    <string name="tab_notifications">Notifications</string>
+    <string name="tab_info">Info</string>
+
+    <!-- InputFragment -->
+    <string name="hint_systolic">Systolic (High)</string>
+    <string name="hint_diastolic">Diastolic (Low)</string>
+    <string name="hint_bpm">BPM (Pulse)</string>
+    <string name="button_insert_values">Submit Values</string>
+    <string name="input_instruction">Please enter systolic, diastolic, and heart rate values (e.g. 130, 80, 75)</string>
+    <string name="input_reminder">Learn how to measure your blood pressure correctly in the information section</string>
+    <string name="footer_app_origin">App developed as part of the Mission 70/26 award by the Portuguese Society of Hypertension</string>
+    <string name="footer_team">Alexandra Pimentel, Ana Rita Queirós, Diana Lamas, Nina Lopes</string>
+
+    <!-- Toasts & Errors -->
+    <string name="error_fill_all_fields">Please fill in all fields!</string>
+    <string name="error_invalid_systolic">Systolic (High) value must be between 20 and 230.</string>
+    <string name="error_invalid_diastolic">Diastolic (Low) value must be between 20 and 150.</string>
+    <string name="error_invalid_bpm">BPM value must be between 30 and 200.</string>
+    <string name="success_values_added">Values successfully submitted!</string>
+    <string name="error_invalid_number_format">Error: Please enter valid numeric values.</string>
+
+    <!-- Alerts -->
+    <string name="alert_high_urgency">Seek medical attention</string>
+    <string name="alert_doctor_recommended">Blood pressure values above desired range. Please contact your Family Doctor</string>
+    <string name="alert_repeat_measurements">Repeat measurement 2 more times today. If values remain above 140/90mmHg, measure every 3 days. If average stays high, contact your Doctor/schedule an appointment.</string>
+
+    <!-- Notifications -->
+    <string name="notif_title">Reminder</string>
+    <string name="notif_medication">Time to take your medication!</string>
+    <string name="notif_measurement">Time to measure your blood pressure!</string>
+    <string name="notif_generic">General reminder</string>
+    <string name="notif_config_med">Medication reminder set!</string>
+    <string name="notif_config_meas">Measurement reminder set!</string>
+
+    <!-- SettingsFragment -->
+    <string name="settings_instructions">Set the time for your medication reminder and press the Medication button.
+Set the time for your measurement reminder and press the Measurement button.
+If you want both at the same time, set the time and press both buttons.</string>
+    <string name="button_medication">Medication</string>
+    <string name="button_measurement">Measurement</string>
+    <string name="success_notification_configured">Reminder set!</string>
+    <string name="notif_channel_name">Reminder Channel</string>
+    <string name="notif_channel_desc">Channel for reminder notifications</string>
+
+    <!-- Table Headers -->
+    <string name="header_systolic">SYS</string>
+    <string name="header_diastolic">DIA</string>
+    <string name="header_bpm">BPM</string>
+    <string name="header_date">Date</string>
+    <string name="header_time">Time</string>
+    <string name="header_avg_systolic">Avg SYS</string>
+    <string name="header_avg_diastolic">Avg DIA</string>
+    <string name="header_avg_bpm">Avg BPM</string>
+
+    <!-- Outros -->
+    <string name="desc_close_alert">Close alert</string>
+    <string name="desc_welcome_image">Welcome image</string>
+</resources>

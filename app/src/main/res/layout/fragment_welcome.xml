@@ -7,6 +7,19 @@
     android:padding="16dp"
     android:background="@android:color/white">
 
+    <Button
+        android:id="@+id/btnPortuguese"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PT 🇵🇹"
+        android:layout_marginEnd="8dp"/>
+
+    <Button
+        android:id="@+id/btnEnglish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EN 🇬🇧" />
+
     <!-- Imagem de boas-vindas -->
     <ImageView
         android:id="@+id/welcomeImage"

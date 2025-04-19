@@ -1,6 +1,7 @@
 package com.example.hta;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -21,6 +22,11 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager2 viewPager;
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(LanguageHelper.setLocale(newBase, LanguageHelper.getLanguage(newBase)));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // Forçar modo claro
@@ -39,29 +45,31 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager.setAdapter(viewPagerAdapter);
 
-        // Configurar abas com nomes na ordem especificada
+        tabLayout.removeAllTabs();
+
         new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
             switch (position) {
                 case 0:
-                    tab.setText("Início"); // Fragmento de início
+                    tab.setText(R.string.tab_home);
                     break;
                 case 1:
-                    tab.setText("Entrada");
+                    tab.setText(R.string.tab_input);
                     break;
                 case 2:
-                    tab.setText("Gráfico");
+                    tab.setText(R.string.tab_graph);
                     break;
                 case 3:
-                    tab.setText("Tabela");
+                    tab.setText(R.string.tab_table);
                     break;
                 case 4:
-                    tab.setText("Notificações");
+                    tab.setText(R.string.tab_notifications);
                     break;
                 case 5:
-                    tab.setText("Informação");
+                    tab.setText(R.string.tab_info);
                     break;
             }
         }).attach();
+
 
 
         viewPager.setCurrentItem(0, false);
