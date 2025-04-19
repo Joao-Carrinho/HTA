@@ -157,7 +157,7 @@ public class GraphFragment extends BaseGraphFragment {
 
         if (systolicCountAbove180 > 0 || diastolicCountAbove110 > 0) {
             Log.d(TAG, "Show alert: Seek medical evaluation.");
-            tvAlertMessage.setText("Procure avaliação em cuidados de saúde");
+            tvAlertMessage.setText(getString(R.string.alert_high_urgency));
             tvAlertMessage.setVisibility(View.VISIBLE);
             closeAlertButton.setVisibility(View.VISIBLE);
         } else if (systolicCountInRange >= 1 || diastolicCountInRange >= 1) {
@@ -165,10 +165,11 @@ public class GraphFragment extends BaseGraphFragment {
                     (averageMax >= 140.0 && averageMax <= 180.0) &&
                     (averageMin >= 90.0 && averageMin <= 109.0)) {
                 Log.d(TAG, "Show alert: Contact Family Doctor.");
-                tvAlertMessage.setText("Valores de tensão arterial acima do valor desejado. Deverá contactar o seu Médico de Família");
+                tvAlertMessage.setText(getString(R.string.alert_doctor_recommended));
             } else {
                 Log.d(TAG, "Show alert: Repeat measurement 2 more times today.");
-                tvAlertMessage.setText("Deve repetir a medição mais 2 vezes hoje. Se os valores se mantiverem acima dos 140/90mmHg, deve medir a tensão de 3/3 dias. Se a média continuar neste intervalo deverá contactar o seu Médico Assistente/agendar consulta.");
+                tvAlertMessage.setText(getString(R.string.alert_repeat_measurements)
+                );
             }
             tvAlertMessage.setVisibility(View.VISIBLE);
             closeAlertButton.setVisibility(View.VISIBLE);

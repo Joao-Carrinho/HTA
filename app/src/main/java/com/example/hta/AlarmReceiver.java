@@ -13,15 +13,15 @@ public class AlarmReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String notificationType = intent.getStringExtra("notification_type");
 
-        String title = "Lembrete";
+        String title = context.getString(R.string.notif_title);
         String message;
 
         if ("medication".equals(notificationType)) {
-            message = "Está na hora de tomar a sua medicação!";
+            message = context.getString(R.string.notif_medication);
         } else if ("measurement".equals(notificationType)) {
-            message = "Está na hora de medir a sua pressão arterial!";
+            message = context.getString(R.string.notif_measurement);
         } else {
-            message = "Lembrete genérico";
+            message = context.getString(R.string.notif_generic);
         }
 
         createNotification(context, title, message, "warning_channel");

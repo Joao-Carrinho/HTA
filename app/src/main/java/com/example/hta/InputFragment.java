@@ -37,7 +37,7 @@ public class InputFragment extends Fragment {
 
                 // Validações para campos vazios
                 if (systolicText.isEmpty() || diastolicText.isEmpty() || bpmText.isEmpty()) {
-                    Toast.makeText(getContext(), "Por favor, preencha todos os campos!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_fill_all_fields), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -48,15 +48,15 @@ public class InputFragment extends Fragment {
 
                 // Validações de intervalo
                 if (systolic < 30.0 || systolic > 230.0) {
-                    Toast.makeText(getContext(), "Valor da Sistólica (Máxima) deve estar entre 20 e 230.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_invalid_systolic), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (diastolic < 20.0 || diastolic > 230.0) {
-                    Toast.makeText(getContext(), "Valor da Diastólica (Mínima) deve estar entre 20 e 150.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_invalid_diastolic), Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (bpm < 30.0 || bpm > 200.0) {
-                    Toast.makeText(getContext(), "Valor de BPM deve estar entre 30 e 200.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), getString(R.string.error_invalid_bpm), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -68,10 +68,10 @@ public class InputFragment extends Fragment {
                 inputDiastolic.setText("");
                 inputBpm.setText("");
 
-                Toast.makeText(getContext(), "Valores inseridos com sucesso!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.success_values_added), Toast.LENGTH_SHORT).show();
 
             } catch (NumberFormatException e) {
-                Toast.makeText(getContext(), "Erro: Insira valores numéricos válidos.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), getString(R.string.error_invalid_number_format), Toast.LENGTH_SHORT).show();
             }
         });
 

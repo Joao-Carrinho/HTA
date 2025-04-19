@@ -36,7 +36,7 @@
             android:layout_height="wrap_content"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             android:background="?android:attr/selectableItemBackground"
-            android:contentDescription="Fechar Aviso"
+            android:contentDescription="@string/desc_close_alert"
             android:tint="@android:color/white" />
     </LinearLayout>
 

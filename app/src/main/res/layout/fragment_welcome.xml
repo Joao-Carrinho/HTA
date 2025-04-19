@@ -14,6 +14,6 @@
         android:layout_height="match_parent"
         android:src="@drawable/ic_welcome"
         android:scaleType="centerInside"
-        android:contentDescription="Imagem de boas-vindas" />
+        android:contentDescription="@string/desc_welcome_image" />
 
 </LinearLayout>

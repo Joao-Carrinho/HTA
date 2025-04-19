@@ -1,6 +1,65 @@
 <resources>
+    <!-- App -->
     <string name="app_name">HTA</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+
+    <!-- Tabs -->
+    <string name="tab_home">Início</string>
+    <string name="tab_input">Entrada</string>
+    <string name="tab_graph">Gráfico</string>
+    <string name="tab_table">Tabela</string>
+    <string name="tab_notifications">Notificações</string>
+    <string name="tab_info">Informação</string>
+
+    <!-- InputFragment -->
+    <string name="hint_systolic">Sistólica(Máxima)</string>
+    <string name="hint_diastolic">Diastólica(Mínima)</string>
+    <string name="hint_bpm">BPM(Pulsação)</string>
+    <string name="button_insert_values">Inserir Valores</string>
+    <string name="input_instruction">Deve inserir os valores de máxima e mínima assim como a freq cardíaca ex 130, 80, 75</string>
+    <string name="input_reminder">Saiba como medir corretamente a sua tensão arterial na secção de informação</string>
+    <string name="footer_app_origin">Aplicação desenvolvida no âmbito do prémio Missão 70/26 da Sociedade Portuguesa de Hipertensão</string>
+    <string name="footer_team">Alexandra Pimentel, Ana Rita Queirós, Diana Lamas, Nina Lopes</string>
+
+    <!-- Toasts & Errors -->
+    <string name="error_fill_all_fields">Por favor, preencha todos os campos!</string>
+    <string name="error_invalid_systolic">Valor da Sistólica (Máxima) deve estar entre 20 e 230.</string>
+    <string name="error_invalid_diastolic">Valor da Diastólica (Mínima) deve estar entre 20 e 150.</string>
+    <string name="error_invalid_bpm">Valor de BPM deve estar entre 30 e 200.</string>
+    <string name="success_values_added">Valores inseridos com sucesso!</string>
+    <string name="error_invalid_number_format">Erro: Insira valores numéricos válidos.</string>
+
+    <!-- Alerta -->
+    <string name="alert_high_urgency">Procure avaliação em cuidados de saúde</string>
+    <string name="alert_doctor_recommended">Valores de tensão arterial acima do valor desejado. Deverá contactar o seu Médico de Família</string>
+    <string name="alert_repeat_measurements">Deve repetir a medição mais 2 vezes hoje. Se os valores se mantiverem acima dos 140/90mmHg, deve medir a tensão de 3/3 dias. Se a média continuar neste intervalo deverá contactar o seu Médico Assistente/agendar consulta.</string>
+
+    <!-- Notifications -->
+    <string name="notif_title">Lembrete</string>
+    <string name="notif_medication">Está na hora de tomar a sua medicação!</string>
+    <string name="notif_measurement">Está na hora de medir a sua pressão arterial!</string>
+    <string name="notif_generic">Lembrete genérico</string>
+
+    <!-- SettingsFragment -->
+    <string name="settings_instructions">Defina a hora a que quer o aviso da medicação e carregue no botão Medicação para receber a notificação.
+Defina a hora da medição e carregue no botão Medição para o mesmo efeito.
+Caso queira a mesma hora para ambos, defina a hora e carregue nos dois botões.</string>
+    <string name="button_medication">Medicação</string>
+    <string name="button_measurement">Medição</string>
+    <string name="success_notification_configured">Limites definidos!</string>
+    <string name="notif_channel_name">Canal de Avisos</string>
+    <string name="notif_channel_desc">Canal para notificações de lembrete</string>
+
+    <!-- Tabela (Cabeçalho) -->
+    <string name="header_systolic">TAS</string>
+    <string name="header_diastolic">TAD</string>
+    <string name="header_bpm">BPM</string>
+    <string name="header_date">Data</string>
+    <string name="header_time">Hora</string>
+    <string name="header_avg_systolic">Méd. TAS</string>
+    <string name="header_avg_diastolic">Méd. TAD</string>
+    <string name="header_avg_bpm">Méd. BPM</string>
+
+    <!-- Outros -->
+    <string name="desc_close_alert">Fechar Aviso</string>
+    <string name="desc_welcome_image">Imagem de boas-vindas</string>
 </resources>

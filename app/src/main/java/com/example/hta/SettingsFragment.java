@@ -107,9 +107,9 @@ public class SettingsFragment extends Fragment {
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String name = "Warning Channel";
-            String description = "Canal para notificações de lembrete";
+            String description = getString(R.string.notif_channel_desc);
             int importance = NotificationManager.IMPORTANCE_HIGH;
-            NotificationChannel channel = new NotificationChannel("warning_channel", name, importance);
+            NotificationChannel channel = new NotificationChannel(getString(R.string.notif_channel_name), name, importance);
             channel.setDescription(description);
 
             NotificationManager notificationManager = requireActivity().getSystemService(NotificationManager.class);
