@@ -1,0 +1,56 @@
+@startuml
+class User {
+
+}
+
+class Measurement {
+  int id
+  float systolicValue
+  float diastolicValue
+  int userId
+  void addMeasurement()
+  void deleteMeasurement()
+  List<Measurement> getMeasurements()
+}
+
+class Threshold {
+  int id
+  float upperThreshold
+  float lowerThreshold
+  int userId
+  void setUpperThreshold(float value)
+  void setLowerThreshold(float value)
+  float getUpperThreshold()
+  float getLowerThreshold()
+}
+
+class Notification {
+  int id
+  String message
+  Date date
+  int userId
+  void sendNotification()
+  void scheduleNotification(Date time)
+}
+
+class Settings {
+  int id
+  TimePicker notificationTime
+  int userId
+  void setNotificationTime(TimePicker time)
+  TimePicker getNotificationTime()
+}
+
+class Link {
+  int id
+  String url
+  String description
+  void openLink()
+}
+
+User "1" --> "0..*" Measurement
+User "1" --> "1" Threshold
+User "1" --> "0..*" Notification
+User "1" --> "1" Settings
+User "1" --> "0..*" Link
+@enduml

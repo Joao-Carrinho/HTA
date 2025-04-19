@@ -1,0 +1,16 @@
+@startuml
+actor User
+participant "GraphMinFragment" as GMF
+participant "AddNumberViewModel" as VM
+participant "SharedPreferences" as SP
+
+User -> GMF: Request graph
+GMF -> VM: Get values for min graph
+VM --> GMF: Return values
+GMF -> SP: Get lower threshold
+SP --> GMF: Return lower threshold
+GMF -> GMF: Draw graph
+alt Value below threshold
+    GMF -> User: Show warning
+end
+@enduml

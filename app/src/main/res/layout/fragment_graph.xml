@@ -1,0 +1,47 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- O gráfico -->
+    <lecho.lib.hellocharts.view.LineChartView
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.8" />
+
+    <LinearLayout
+        android:id="@+id/alertContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:background="@android:color/holo_red_light"
+        android:gravity="center_vertical"> <!-- Remover o visibility -->
+
+        <TextView
+            android:id="@+id/tvAlertMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text=""
+            android:textColor="@android:color/white" />
+
+        <ImageButton
+            android:id="@+id/closeAlertButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Fechar Aviso"
+            android:tint="@android:color/white" />
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>

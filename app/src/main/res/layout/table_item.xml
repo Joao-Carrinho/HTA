@@ -1,0 +1,74 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:showDividers="middle"
+    android:divider="@drawable/vertical_divider"
+    android:dividerPadding="4dp">
+
+    <TextView
+        android:id="@+id/text_view_max"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="130.0"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_min"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="70.0"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_bpm"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="65"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_date"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="15-01-25"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_time"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="18:43"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_average_max"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="143.3"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_average_min"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="86.7"
+        android:padding="4dp" />
+
+    <TextView
+        android:id="@+id/text_view_average_bpm"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="75.0"
+        android:padding="4dp" />
+</LinearLayout>

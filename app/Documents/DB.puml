@@ -1,0 +1,49 @@
+@startuml
+entity User {
+  * id : int
+  * name : String
+  * email : String
+  * password : String
+}
+
+entity Measurement {
+  * id : int
+  * systolicValue : float
+  * diastolicValue : float
+  * date : Date
+  * userId : int
+}
+
+entity Threshold {
+  * id : int
+  * upperThreshold : float
+  * lowerThreshold : float
+  * userId : int
+}
+
+entity Notification {
+  * id : int
+  * message : String
+  * date : Date
+  * userId : int
+}
+
+entity Settings {
+  * id : int
+  * notificationTime : TimePicker
+  * userId : int
+}
+
+entity Link {
+  * id : int
+  * url : String
+  * description : String
+  * userId : int
+}
+
+User ||--o{ Measurement
+User ||--|| Threshold
+User ||--o{ Notification
+User ||--|| Settings
+User ||--o{ Link
+@enduml

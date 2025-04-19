@@ -1,0 +1,13 @@
+@startuml
+actor User
+participant "InputFragment" as IF
+participant "AddNumberViewModel" as VM
+participant "AppDatabase" as DB
+
+User -> IF: Input values
+IF -> VM: Pass input values
+VM -> DB: Save values
+DB --> VM: Acknowledge
+VM --> IF: Acknowledge
+IF -> User: Show success message
+@enduml

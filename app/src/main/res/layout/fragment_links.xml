@@ -1,0 +1,29 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/staticTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplicação desenvolvida no âmbito do prémio Missão 70/26 da Sociedade Portuguesa de Hipertensão"
+        android:textSize="16sp"
+        android:textColor="#97525151"
+        android:paddingBottom="2dp"/>
+    <TextView
+        android:id="@+id/staticTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alexandra Pimentel, Ana Rita Queirós, Diana Lamas, Nina Lopes"
+        android:textSize="16sp"
+        android:textColor="#97525151"
+        android:paddingBottom="2dp"/>
+
+</LinearLayout>

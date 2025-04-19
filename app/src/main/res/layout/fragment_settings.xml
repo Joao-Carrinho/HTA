@@ -1,0 +1,70 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center_vertical">
+
+    <!-- Texto explicativo -->
+    <TextView
+        android:id="@+id/instructionsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Defina a hora a que quer o aviso da medicação e carregue no botão Medicação para receber a notificação.\nDefina a hora da medição e carregue no botão Medição para o mesmo efeito.\nCaso queira a mesma hora para ambos, defina a hora e carregue nos dois botões."
+        android:textSize="16sp"
+        android:gravity="start"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:paddingBottom="8dp"/>
+
+    <TimePicker
+        android:id="@+id/timePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner" />
+
+    <Button
+        android:id="@+id/setMeasureButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medição"
+        android:backgroundTint="@color/teal_700"
+        android:textColor="@android:color/black"/>
+
+    <Button
+        android:id="@+id/setMedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Medicação"
+        android:backgroundTint="@color/teal_700"
+        android:textColor="@android:color/black"/>
+
+    <TextView
+        android:id="@+id/successMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Limites definidos!"
+        android:visibility="gone" />
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+    <TextView
+        android:id="@+id/staticTextView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aplicação desenvolvida no âmbito do prémio Missão 70/26 da Sociedade Portuguesa de Hipertensão"
+        android:textSize="16sp"
+        android:textColor="#97525151"
+        android:paddingBottom="2dp"/>
+    <TextView
+        android:id="@+id/staticTextView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Alexandra Pimentel, Ana Rita Queirós, Diana Lamas, Nina Lopes"
+        android:textSize="16sp"
+        android:textColor="#97525151"
+        android:paddingBottom="2dp"/>
+</LinearLayout>

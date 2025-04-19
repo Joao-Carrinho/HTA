@@ -1,0 +1,10 @@
+@startuml
+actor User
+participant "SettingsFragment" as SF
+participant "SharedPreferences" as SP
+
+User -> SF: Input upper and lower threshold
+SF -> SP: Save thresholds
+SP --> SF: Acknowledge
+SF -> User: Show success message
+@enduml

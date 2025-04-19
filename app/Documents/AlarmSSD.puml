@@ -1,0 +1,14 @@
+@startuml
+actor User
+
+User -> SettingsFragment: setNotificationTime(hour, minute)
+SettingsFragment -> SharedPreferences: saveNotificationTime(hour, minute)
+SettingsFragment -> MainActivity: checkAndRequestPermissions(hour, minute)
+MainActivity -> PermissionManager: checkPermission(POST_NOTIFICATIONS)
+PermissionManager -> MainActivity: permissionGranted
+alt permissionGranted
+    MainActivity -> AlarmManager: scheduleDailyNotification(hour, minute)
+else permissionDenied
+    MainActivity -> User: showPermissionDeniedMessage()
+end
+@enduml

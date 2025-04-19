@@ -1,0 +1,16 @@
+@startuml
+actor User
+participant "GraphMaxFragment" as GMF
+participant "AddNumberViewModel" as VM
+participant "SharedPreferences" as SP
+
+User -> GMF: Request graph
+GMF -> VM: Get values for max graph
+VM --> GMF: Return values
+GMF -> SP: Get upper threshold
+SP --> GMF: Return upper threshold
+GMF -> GMF: Draw graph
+alt Value above threshold
+    GMF -> User: Show warning
+end
+@enduml

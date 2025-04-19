@@ -1,0 +1,19 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <!-- Imagem de boas-vindas -->
+    <ImageView
+        android:id="@+id/welcomeImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_welcome"
+        android:scaleType="centerInside"
+        android:contentDescription="Imagem de boas-vindas" />
+
+</LinearLayout>

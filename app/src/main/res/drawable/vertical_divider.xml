@@ -1,0 +1,4 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:width="1dp" /> <!-- Largura para divisores verticais -->
+    <solid android:color="#D3D3D3" /> <!-- Cor do divisor -->
+</shape>

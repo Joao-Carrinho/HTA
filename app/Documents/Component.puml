@@ -1,0 +1,25 @@
+@startuml
+package "Hypertension Monitoring App" {
+    [MainActivity]
+    [SettingsFragment]
+    [InputFragment]
+    [GraphMinFragment]
+    [GraphMaxFragment]
+    [LinksFragment]
+    [AddNumberViewModel]
+    [AppDatabase]
+    [AlarmReceiver]
+
+    [MainActivity] --> [SettingsFragment]
+    [MainActivity] --> [InputFragment]
+    [MainActivity] --> [GraphMinFragment]
+    [MainActivity] --> [GraphMaxFragment]
+    [MainActivity] --> [LinksFragment]
+    [SettingsFragment] --> [AddNumberViewModel]
+    [InputFragment] --> [AddNumberViewModel]
+    [GraphMinFragment] --> [AddNumberViewModel]
+    [GraphMaxFragment] --> [AddNumberViewModel]
+    [AddNumberViewModel] --> [AppDatabase]
+    [MainActivity] --> [AlarmReceiver]
+}
+@enduml

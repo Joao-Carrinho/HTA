@@ -1,0 +1,121 @@
+@startuml
+class MainActivity {
+    +TabLayout tabLayout
+    +ViewPager2 viewPager
+    -void onCreate(Bundle savedInstanceState)
+    -void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults)
+}
+
+class ViewPagerAdapter {
+    +ViewPagerAdapter(FragmentActivity fragmentActivity)
+    +Fragment createFragment(int position)
+    +int getItemCount()
+}
+
+class InputFragment {
+    +View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+}
+
+class GraphMinFragment {
+    +void updateGraph(List<NumberEntity> numbers)
+    +LiveData<List<NumberEntity>> getNumbersLiveData()
+}
+
+class GraphMaxFragment {
+    +void updateGraph(List<NumberEntity> numbers)
+    +LiveData<List<NumberEntity>> getNumbersLiveData()
+}
+
+class SettingsFragment {
+    +View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    -void createNotificationChannel()
+    -void checkAndRequestPermissions(int hour, int minute)
+    -void scheduleDailyNotification(int hour, int minute)
+    -long getTriggerTime(int hour, int minute)
+    -void showSuccessMessage(String message)
+}
+
+class LinksFragment {
+    +View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+}
+
+class LinkItem {
+    +String title
+    +String url
+    +LinkItem(String title, String url)
+    +String getTitle()
+    +String getUrl()
+}
+
+class LinksAdapter {
+    +void onBindViewHolder(ViewHolder holder, int position)
+    +int getItemCount()
+    -List<LinkItem> links
+    -Context context
+}
+
+abstract class BaseGraphFragment {
+    +AddNumberViewModel addNumberViewModel
+    +LineChartView lineChart
+    +TextView tvAlertMessage
+    +SharedPreferences sharedPreferences
+    +View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    #void updateGraph(List<NumberEntity> numbers)
+    #void setupChart(List<PointValue> values, List<AxisValue> axisValues, String xLabel, String yLabel)
+    #abstract LiveData<List<NumberEntity>> getNumbersLiveData()
+}
+
+class AddNumberViewModel {
+    +LiveData<List<NumberEntity>> getNumbersBox1()
+    +LiveData<List<NumberEntity>> getNumbersBox2()
+    +void addNumbers(float number1, float number2)
+    -void loadNumbers()
+}
+
+class AppDatabase {
+    +static final Migration MIGRATION_1_2
+    +static AppDatabase getDatabase(Context context)
+    +abstract NumberDao numberDao()
+}
+
+class NumberEntity {
+    +int id
+    +float value
+    +int inputBoxId
+    +NumberEntity(float value, int inputBoxId)
+    +int getId()
+    +float getValue()
+}
+
+class NumberDao {
+    +void insert(NumberEntity number)
+    +List<NumberEntity> getAllNumbersBox1()
+    +List<NumberEntity> getAllNumbersBox2()
+}
+
+class AlarmReceiver {
+    +void onReceive(Context context, Intent intent)
+    -void createNotification(Context context)
+}
+
+MainActivity --> ViewPagerAdapter
+ViewPagerAdapter --> InputFragment
+ViewPagerAdapter --> GraphMinFragment
+ViewPagerAdapter --> GraphMaxFragment
+ViewPagerAdapter --> SettingsFragment
+ViewPagerAdapter --> LinksFragment
+GraphMinFragment --|> BaseGraphFragment
+GraphMaxFragment --|> BaseGraphFragment
+BaseGraphFragment --> AddNumberViewModel
+BaseGraphFragment --> LineChartView
+BaseGraphFragment --> TextView
+BaseGraphFragment --> SharedPreferences
+AddNumberViewModel --> AppDatabase
+AddNumberViewModel --> NumberDao
+AppDatabase --> NumberDao
+AppDatabase --> NumberEntity
+AlarmReceiver --> NotificationCompat
+AlarmReceiver --> NotificationManagerCompat
+LinksFragment --> LinksAdapter
+LinksAdapter --> LinkItem
+@enduml

@@ -1,0 +1,11 @@
+@startuml
+actor User
+
+User -> LinksFragment : clickLink(linkId)
+LinksFragment -> LinksAdapter : onBindViewHolder(linkId)
+LinksAdapter -> LinkItem : getLink(linkId)
+LinkItem -> LinksAdapter : link
+LinksAdapter -> LinksFragment : link
+LinksFragment -> Browser : open(link.url)
+Browser -> User : showPage()
+@enduml
