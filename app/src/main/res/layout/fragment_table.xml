@@ -22,7 +22,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="TAS"
+                android:text="@string/header_systolic"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
@@ -31,7 +31,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="TAD"
+                android:text="@string/header_diastolic"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
@@ -40,7 +40,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="BPM"
+                android:text="@string/header_bpm"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
@@ -49,7 +49,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Data"
+                android:text="@string/header_date"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
@@ -58,7 +58,7 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Hora"
+                android:text="@string/header_time"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
@@ -76,7 +76,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Méd. TAD"
+                android:text="@string/header_avg_systolic"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />
@@ -85,7 +85,7 @@
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Méd. BPM"
+                android:text="@string/header_avg_diastolic"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
                 android:padding="8dp" />

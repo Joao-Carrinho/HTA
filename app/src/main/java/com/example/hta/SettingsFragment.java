@@ -91,7 +91,10 @@ public class SettingsFragment extends Fragment {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, triggerTime, pendingIntent);
             }
-            String message = "Notificação de " + (notificationType.equals("medication") ? "Medicação" : "Medição") + " configurada!";
+            String message = getString(notificationType.equals("medication")
+                    ? R.string.notif_config_med
+                    : R.string.notif_config_meas);
+
             Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
             showSuccessMessage(message);
         } else {

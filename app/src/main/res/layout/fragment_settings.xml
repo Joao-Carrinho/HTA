@@ -10,7 +10,7 @@
         android:id="@+id/instructionsText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Defina a hora a que quer o aviso da medicação e carregue no botão Medicação para receber a notificação.\nDefina a hora da medição e carregue no botão Medição para o mesmo efeito.\nCaso queira a mesma hora para ambos, defina a hora e carregue nos dois botões."
+        android:text="@string/settings_instructions"
         android:textSize="16sp"
         android:gravity="start"
         android:padding="16dp"
@@ -27,7 +27,7 @@
         android:id="@+id/setMeasureButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medição"
+        android:text=" @string/button_measurement"
         android:backgroundTint="@color/teal_700"
         android:textColor="@android:color/black"/>
 
@@ -35,7 +35,7 @@
         android:id="@+id/setMedButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medicação"
+        android:text=" @string/button_medication"
         android:backgroundTint="@color/teal_700"
         android:textColor="@android:color/black"/>
 
@@ -43,7 +43,7 @@
         android:id="@+id/successMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Limites definidos!"
+        android:text="@string/success_notification_configured"
         android:visibility="gone" />
 
     <View
@@ -55,7 +55,7 @@
         android:id="@+id/staticTextView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aplicação desenvolvida no âmbito do prémio Missão 70/26 da Sociedade Portuguesa de Hipertensão"
+        android:text="@string/footer_app_origin"
         android:textSize="16sp"
         android:textColor="#97525151"
         android:paddingBottom="2dp"/>
@@ -63,7 +63,7 @@
         android:id="@+id/staticTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Alexandra Pimentel, Ana Rita Queirós, Diana Lamas, Nina Lopes"
+        android:text="@string/footer_team"
         android:textSize="16sp"
         android:textColor="#97525151"
         android:paddingBottom="2dp"/>

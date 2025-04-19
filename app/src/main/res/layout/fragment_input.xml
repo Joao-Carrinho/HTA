@@ -9,7 +9,7 @@
         android:id="@+id/staticTextView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Deve inserir os valores de máxima e mínima assim como a freq cardíaca ex 130, 80, 75"
+        android:text="@string/input_instruction"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:paddingBottom="8dp"/>
@@ -18,28 +18,28 @@
         android:id="@+id/inputNumber1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Sistólica(Máxima)"
+        android:hint="@string/hint_systolic"
         android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/inputNumber2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Diastólica(Mínima)"
+        android:hint="@string/hint_diastolic"
         android:inputType="numberDecimal" />
 
     <EditText
         android:id="@+id/inputNumber3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="BPM(Pulsação)"
+        android:hint="@string/hint_bpm"
         android:inputType="numberDecimal" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Inserir Valores"
+        android:text="@string/button_insert_values"
         android:backgroundTint="@color/teal_700"
         android:textColor="@android:color/black"/>
 
@@ -47,7 +47,7 @@
         android:id="@+id/staticTextView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Saiba como medir corretamente a sua tensão arterial na secção de informação"
+        android:text="@string/input_reminder"
         android:textSize="16sp"
         android:textColor="@color/black"
         android:paddingBottom="8dp"/>
@@ -60,7 +60,7 @@
         android:id="@+id/staticTextView3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Aplicação desenvolvida no âmbito do prémio Missão 70/26 da Sociedade Portuguesa de Hipertensão"
+        android:text="@string/footer_app_origin"
         android:textSize="16sp"
         android:textColor="#97525151"
         android:paddingBottom="2dp"/>
@@ -68,7 +68,7 @@
         android:id="@+id/staticTextView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Alexandra Pimentel, Ana Rita Queirós, Diana Lamas, Nina Lopes"
+        android:text="@string/footer_team"
         android:textSize="16sp"
         android:textColor="#97525151"
         android:paddingBottom="2dp"/>

@@ -46,6 +46,8 @@ Caso queira a mesma hora para ambos, defina a hora e carregue nos dois botões.<
     <string name="button_medication">Medicação</string>
     <string name="button_measurement">Medição</string>
     <string name="success_notification_configured">Limites definidos!</string>
+    <string name="notif_config_med">Notificação de Medicação configurada!</string>
+    <string name="notif_config_meas">Notificação de Medição configurada!</string>
     <string name="notif_channel_name">Canal de Avisos</string>
     <string name="notif_channel_desc">Canal para notificações de lembrete</string>
 
