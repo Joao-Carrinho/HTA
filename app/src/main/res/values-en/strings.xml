@@ -62,6 +62,13 @@ If you want both at the same time, set the time and press both buttons.</string>
     <string name="header_avg_diastolic">Avg DIA</string>
     <string name="header_avg_bpm">Avg BPM</string>
 
+    <!-- Links -->
+    <string name="link_how_to_measure">How to Measure Blood Pressure</string>
+    <string name="link_healthy_lifestyle">Healthy Lifestyle</string>
+    <string name="link_privacy_policy">Privacy Policy</string>
+    <string name="link_importance">Importance of Blood Pressure Control</string>
+
+
     <!-- Outros -->
     <string name="desc_close_alert">Close alert</string>
     <string name="desc_welcome_image">Welcome image</string>
