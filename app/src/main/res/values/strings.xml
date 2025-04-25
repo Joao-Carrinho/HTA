@@ -61,6 +61,12 @@ Caso queira a mesma hora para ambos, defina a hora e carregue nos dois botões.<
     <string name="header_avg_diastolic">Méd. TAD</string>
     <string name="header_avg_bpm">Méd. BPM</string>
 
+    <!-- Links -->
+    <string name="link_how_to_measure">Como medir a tensão arterial</string>
+    <string name="link_healthy_lifestyle">Estilo de vida saudável</string>
+    <string name="link_privacy_policy">Política de privacidade</string>
+    <string name="link_importance">Importância do controlo da tensão</string>
+
     <!-- Outros -->
     <string name="desc_close_alert">Fechar Aviso</string>
     <string name="desc_welcome_image">Imagem de boas-vindas</string>

@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.FileProvider;
@@ -40,7 +41,6 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinkViewHold
         holder.textViewLink.setText(linkItem.getTitle());
 
         holder.textViewLink.setOnClickListener(v -> {
-            // Abrir PDF local
             openPdfFromRaw(linkItem.getResourceId());
         });
     }
@@ -61,9 +61,13 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinkViewHold
 
     private void openPdfFromRaw(int resourceId) {
         try {
-            // Guardar o PDF em armazenamento externo
-            File file = new File(context.getExternalFilesDir(null), "temp.pdf");
+            if (resourceId == 0) {
+                Toast.makeText(context, "PDF não encontrado (ID = 0)", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             InputStream inputStream = context.getResources().openRawResource(resourceId);
+            File file = new File(context.getCacheDir(), "temp.pdf");
             FileOutputStream outputStream = new FileOutputStream(file);
 
             byte[] buffer = new byte[1024];
@@ -75,14 +79,24 @@ public class LinksAdapter extends RecyclerView.Adapter<LinksAdapter.LinkViewHold
             inputStream.close();
             outputStream.close();
 
-            // Abrir o PDF com um Intent
-            Uri pdfUri = FileProvider.getUriForFile(context, context.getPackageName() + ".provider", file);
+            Uri uri = FileProvider.getUriForFile(
+                    context,
+                    context.getPackageName() + ".provider",
+                    file
+            );
+
             Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setDataAndType(pdfUri, "application/pdf");
+            intent.setDataAndType(uri, "application/pdf");
             intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            context.startActivity(intent);
+
+            if (intent.resolveActivity(context.getPackageManager()) != null) {
+                context.startActivity(intent);
+            } else {
+                Toast.makeText(context, "Nenhuma app encontrada para abrir PDF. Por favor, instale um leitor de PDFs.", Toast.LENGTH_LONG).show();
+            }
 
         } catch (Exception e) {
+            Toast.makeText(context, "Erro ao abrir PDF: " + e.getMessage(), Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }

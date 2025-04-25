@@ -26,18 +26,44 @@ public class LinksFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_links, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        if (recyclerView != null) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        // Adicionar PDFs locais
-        linkItemList = new ArrayList<>();
-        linkItemList.add(new LinkItem("Estilo de Vida Saudável", R.raw.estilo_vida));
-        linkItemList.add(new LinkItem("Como Medir Corretamente a Tensão Arterial", R.raw.como_medir));
-        linkItemList.add(new LinkItem("Hipertensão Arterial - importância e consequências", R.raw.importancia));
-        linkItemList.add(new LinkItem("Política de Privacidade", R.raw.privacidade));
+            String lang = LanguageHelper.getLanguage(requireContext());
 
-        linksAdapter = new LinksAdapter(getContext(), linkItemList);
-        recyclerView.setAdapter(linksAdapter);
+            linkItemList = new ArrayList<>();
+            linkItemList.add(new LinkItem(
+                    getString(R.string.link_healthy_lifestyle),
+                    getPdfRes(lang, "estilo_vida")
+            ));
+            linkItemList.add(new LinkItem(
+                    getString(R.string.link_how_to_measure),
+                    getPdfRes(lang, "como_medir")
+            ));
+            linkItemList.add(new LinkItem(
+                    getString(R.string.link_importance),
+                    getPdfRes(lang, "importancia")
+            ));
+            linkItemList.add(new LinkItem(
+                    getString(R.string.link_privacy_policy),
+                    getPdfRes(lang, "privacidade")
+            ));
+
+            linksAdapter = new LinksAdapter(getContext(), linkItemList);
+            recyclerView.setAdapter(linksAdapter);
+        }
 
         return view;
+    }
+
+    private int getPdfRes(String lang, String baseName) {
+        String resName = baseName + (lang.equals("en") ? "_en" : "");
+        int id = getResources().getIdentifier(resName, "raw", requireContext().getPackageName());
+
+        if (id == 0) {
+            id = getResources().getIdentifier(baseName, "raw", requireContext().getPackageName());
+        }
+
+        return id;
     }
 }
