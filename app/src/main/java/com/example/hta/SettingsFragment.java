@@ -79,7 +79,7 @@ public class SettingsFragment extends Fragment {
         AlarmManager alarmManager = (AlarmManager) requireContext().getSystemService(Context.ALARM_SERVICE);
 
         Intent intent = new Intent(getContext(), AlarmReceiver.class);
-        intent.putExtra("notification_type", notificationType);
+        intent.putExtra(getString(R.string.key_notification_type), notificationType);
 
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 getContext(),

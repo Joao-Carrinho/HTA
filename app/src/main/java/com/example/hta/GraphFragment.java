@@ -10,6 +10,11 @@ import android.widget.ImageButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
+
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -39,14 +44,14 @@ public class GraphFragment extends BaseGraphFragment {
             closeAlertButton.setVisibility(View.GONE); // Hide button
 
             // Add valid indices to dismissed set and save
-            if (numbers != null) {
-                for (int i = 0; i < numbers.size(); i++) {
-                    dismissedAlertIndices.add(i);
-                }
-                saveDismissedAlertIndices();
-            } else {
-                Log.w(TAG, "No numbers available to add to dismissed indices.");
+            if (numbers == null) {
+                return;
             }
+
+            for (int i = 0; i < numbers.size(); i++) {
+                dismissedAlertIndices.add(i);
+            }
+            saveDismissedAlertIndices();
         });
 
         return view;
@@ -64,7 +69,6 @@ public class GraphFragment extends BaseGraphFragment {
             if (numbers != null && !numbers.isEmpty()) {
                 updateGraph(numbers);
             } else {
-                Log.d(TAG, "Table cleared, clearing dismissed alert indices.");
                 clearDismissedAlertIndices();
             }
         });
@@ -87,7 +91,6 @@ public class GraphFragment extends BaseGraphFragment {
         for (String index : dismissedSet) {
             dismissedAlertIndices.add(Integer.parseInt(index)); // Convert back to integer
         }
-        Log.d(TAG, "Dismissed alert indices loaded: " + dismissedAlertIndices.toString());
     }
 
     private void clearDismissedAlertIndices() {
@@ -95,72 +98,72 @@ public class GraphFragment extends BaseGraphFragment {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(DISMISSED_ALERTS_KEY);
         editor.apply();
-        Log.d(TAG, "Dismissed alert indices have been cleared.");
     }
 
     @Override
     protected void updateGraph(List<NumberEntity> numbers) {
         if (numbers == null || numbers.isEmpty()) {
-            Log.d(TAG, "No data available to update the graph.");
             return;
         }
 
         this.numbers = numbers; // Updates current list of numbers
-        List<PointValue> minValues = new ArrayList<>();
-        List<PointValue> maxValues = new ArrayList<>();
-        List<AxisValue> axisValues = new ArrayList<>();
-
-        float totalMin = 0;
-        float totalMax = 0;
-        int systolicCountInRange = 0;
-        int diastolicCountInRange = 0;
-        int systolicCountAbove180 = 0;
-        int diastolicCountAbove110 = 0;
+        GraphValues stats = new GraphValues();
 
         for (int i = 0; i < numbers.size(); i++) {
             float minValue = numbers.get(i).getMinValue();
             float maxValue = numbers.get(i).getMaxValue();
-            minValues.add(new PointValue(i, minValue));
-            maxValues.add(new PointValue(i, maxValue));
+            stats.minValues.add(new PointValue(i, minValue));
+            stats.maxValues.add(new PointValue(i, maxValue));
 
-            axisValues.add(new AxisValue(i).setLabel(numbers.get(i).getTimestamp().split(" ")[1]));
+            String utc = numbers.get(i).getTimestamp();
+            ZonedDateTime localTime = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                localTime = Instant.parse(utc).atZone(ZoneId.systemDefault());
+            }
+            String hour = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                hour = localTime.format(DateTimeFormatter.ofPattern("HH:mm"));
+            }
+            stats.axisValues.add(new AxisValue(i).setLabel(hour));
 
-            totalMin += minValue;
-            totalMax += maxValue;
+            stats.totalMin += minValue;
+            stats.totalMax += maxValue;
 
             if (dismissedAlertIndices.contains(i)) {
                 continue;
             }
 
             if (maxValue >= 140.0 && maxValue <= 180.0) {
-                systolicCountInRange++;
+                stats.systolicCountInRange++;
             }
             if (minValue >= 90.0 && minValue <= 109.0) {
-                diastolicCountInRange++;
+                stats.diastolicCountInRange++;
             }
             if (maxValue > 180.0) {
-                systolicCountAbove180++;
+                stats.systolicCountAbove180++;
             }
             if (minValue > 110.0) {
-                diastolicCountAbove110++;
+                stats.diastolicCountAbove110++;
             }
         }
 
-        float averageMin = totalMin / numbers.size();
-        float averageMax = totalMax / numbers.size();
+        float averageMin = stats.totalMin / numbers.size();
+        float averageMax = stats.totalMax / numbers.size();
 
         List<Line> lines = new ArrayList<>();
-        lines.add(new Line(minValues).setColor(ChartUtils.COLOR_BLUE).setCubic(false));
-        lines.add(new Line(maxValues).setColor(ChartUtils.COLOR_GREEN).setCubic(false));
+        lines.add(new Line(stats.minValues).setColor(ChartUtils.COLOR_BLUE).setCubic(false));
+        lines.add(new Line(stats.maxValues).setColor(ChartUtils.COLOR_GREEN).setCubic(false));
 
-        setupChart(lines, axisValues, "Hora", "Valores");
+        setupChart(lines, stats.axisValues, getString(R.string.label_time), getString(R.string.label_values));
 
-        if (systolicCountAbove180 > 0 || diastolicCountAbove110 > 0) {
+
+
+        if (stats.systolicCountAbove180 > 0 || stats.diastolicCountAbove110 > 0) {
             Log.d(TAG, "Show alert: Seek medical evaluation.");
             tvAlertMessage.setText(getString(R.string.alert_high_urgency));
             tvAlertMessage.setVisibility(View.VISIBLE);
             closeAlertButton.setVisibility(View.VISIBLE);
-        } else if (systolicCountInRange >= 1 || diastolicCountInRange >= 1) {
+        } else if (stats.systolicCountInRange >= 1 || stats.diastolicCountInRange >= 1) {
             if (numbers.size() >= 3 &&
                     (averageMax >= 140.0 && averageMax <= 180.0) &&
                     (averageMin >= 90.0 && averageMin <= 109.0)) {
@@ -179,12 +182,7 @@ public class GraphFragment extends BaseGraphFragment {
             closeAlertButton.setVisibility(View.GONE);
         }
 
-        Log.d(TAG, "Systolic Count in Range: " + systolicCountInRange);
-        Log.d(TAG, "Diastolic Count in Range: " + diastolicCountInRange);
-        Log.d(TAG, "Systolic Count Above 180: " + systolicCountAbove180);
-        Log.d(TAG, "Diastolic Count Above 110: " + diastolicCountAbove110);
-        Log.d(TAG, "Average Max: " + averageMax);
-        Log.d(TAG, "Average Min: " + averageMin);
+
     }
 
     @Override

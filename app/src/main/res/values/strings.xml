@@ -38,6 +38,8 @@
     <string name="notif_medication">Está na hora de tomar a sua medicação!</string>
     <string name="notif_measurement">Está na hora de medir a sua pressão arterial!</string>
     <string name="notif_generic">Lembrete genérico</string>
+    <string name="notification_key_medication">medication</string>
+    <string name="notification_key_measurement">measurement</string>
 
     <!-- SettingsFragment -->
     <string name="settings_instructions">Defina a hora a que quer o aviso da medicação e carregue no botão Medicação para receber a notificação.
@@ -67,7 +69,15 @@ Caso queira a mesma hora para ambos, defina a hora e carregue nos dois botões.<
     <string name="link_privacy_policy">Política de privacidade</string>
     <string name="link_importance">Importância do controlo da tensão</string>
 
+    <!-- Gráfico Labels -->
+    <string name="label_time">Hora</string>
+    <string name="label_values">Valores</string>
+
     <!-- Outros -->
     <string name="desc_close_alert">Fechar Aviso</string>
     <string name="desc_welcome_image">Imagem de boas-vindas</string>
+    <string name="key_notification_type">notification_type</string>
+    <string name="channel_warning">warning_channel</string>
+    <string name="key_request_permission">request_notification_permission</string>
+
 </resources>

@@ -1,8 +1,11 @@
 package com.example.hta;
 
+import android.os.Build;
+
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.Date;
 import java.util.Locale;
 
@@ -19,7 +22,9 @@ public class NumberEntity {
         this.minValue = minValue;
         this.maxValue = maxValue;
         this.bpm = bpm;
-        this.timestamp = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault()).format(new Date());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            this.timestamp = Instant.now().toString();
+        }
     }
 
     public int getId() {

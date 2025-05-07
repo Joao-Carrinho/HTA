@@ -13,12 +13,12 @@ public interface NumberDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insert(NumberEntity number);
 
-    @Query("SELECT * FROM number_table WHERE minValue != 0 ORDER BY timestamp ASC")
+    @Query(Queries.SELECT_NUMBERS_BOX1)
     LiveData<List<NumberEntity>> getAllNumbersBox1();
 
-    @Query("SELECT * FROM number_table WHERE maxValue != 0 ORDER BY timestamp ASC")
+    @Query(Queries.SELECT_NUMBERS_BOX2)
     LiveData<List<NumberEntity>> getAllNumbersBox2();
 
-    @Query("SELECT * FROM number_table ORDER BY timestamp ASC")
+    @Query(Queries.SELECT_ALL_NUMBERS)
     LiveData<List<NumberEntity>> getAllNumbers();
 }

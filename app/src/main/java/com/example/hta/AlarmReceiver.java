@@ -11,20 +11,25 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        String notificationType = intent.getStringExtra("notification_type");
+        String key = intent.getStringExtra(context.getString(R.string.key_notification_type));
+        NotificationType type = NotificationType.fromKey(context, key);
 
         String title = context.getString(R.string.notif_title);
         String message;
 
-        if ("medication".equals(notificationType)) {
-            message = context.getString(R.string.notif_medication);
-        } else if ("measurement".equals(notificationType)) {
-            message = context.getString(R.string.notif_measurement);
-        } else {
-            message = context.getString(R.string.notif_generic);
+        switch (type) {
+            case MEDICATION:
+                message = context.getString(R.string.notif_medication);
+                break;
+            case MEASUREMENT:
+                message = context.getString(R.string.notif_measurement);
+                break;
+            default:
+                message = context.getString(R.string.notif_generic);
+                break;
         }
 
-        createNotification(context, title, message, "warning_channel");
+        createNotification(context, title, message, context.getString(R.string.channel_warning));
     }
 
     private void createNotification(Context context, String title, String message, String channelId) {
@@ -45,8 +50,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 private void requestNotificationPermission(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
-        intent.putExtra("request_notification_permission", true);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+    intent.putExtra(context.getString(R.string.key_request_permission), true);
+    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
     }
 }

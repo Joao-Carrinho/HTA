@@ -19,21 +19,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_systolic"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:maxLength="5"/>
 
     <EditText
         android:id="@+id/inputNumber2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_diastolic"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:maxLength="5"/>
 
     <EditText
         android:id="@+id/inputNumber3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_bpm"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        android:maxLength="5"/>
 
     <Button
         android:id="@+id/addButton"

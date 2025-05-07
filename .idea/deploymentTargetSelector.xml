@@ -15,7 +15,7 @@
       </SelectionState>
       <SelectionState runConfigName="Desktop.HTA.app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2024-08-22T20:25:18.749109200Z">
+        <DropdownSelection timestamp="2025-04-25T19:56:56.768150Z">
           <Target type="DEFAULT_BOOT">
             <handle>
               <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\jonin\.android\avd\Medium_Phone_API_35.avd" />
