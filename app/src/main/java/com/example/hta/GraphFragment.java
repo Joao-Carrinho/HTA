@@ -158,6 +158,7 @@ public class GraphFragment extends BaseGraphFragment {
 
 
 
+        /* Antigo
         if (stats.systolicCountAbove180 > 0 || stats.diastolicCountAbove110 > 0) {
             Log.d(TAG, "Show alert: Seek medical evaluation.");
             tvAlertMessage.setText(getString(R.string.alert_high_urgency));
@@ -180,8 +181,36 @@ public class GraphFragment extends BaseGraphFragment {
             Log.d(TAG, "No alert being shown.");
             tvAlertMessage.setVisibility(View.GONE);
             closeAlertButton.setVisibility(View.GONE);
+        } */
+
+
+        /* Novo*/
+        if (stats.systolicCountAbove180 > 0 || stats.diastolicCountAbove110 > 0) {
+            Log.d(TAG, "Show alert: Seek medical evaluation.");
+            tvAlertMessage.setText(getString(R.string.alert_high_urgency));
+            tvAlertMessage.setVisibility(View.VISIBLE);
+            closeAlertButton.setVisibility(View.VISIBLE);
+            return;
         }
 
+        if (stats.systolicCountInRange >= 1 || stats.diastolicCountInRange >= 1) {
+            if (numbers.size() >= 3 &&
+                    (averageMax >= 140.0 && averageMax <= 180.0) &&
+                    (averageMin >= 90.0 && averageMin <= 109.0)) {
+                Log.d(TAG, "Show alert: Contact Family Doctor.");
+                tvAlertMessage.setText(getString(R.string.alert_doctor_recommended));
+            } else {
+                Log.d(TAG, "Show alert: Repeat measurement 2 more times today.");
+                tvAlertMessage.setText(getString(R.string.alert_repeat_measurements));
+            }
+            tvAlertMessage.setVisibility(View.VISIBLE);
+            closeAlertButton.setVisibility(View.VISIBLE);
+            return;
+        }
+
+    // Nenhum alerta
+        tvAlertMessage.setVisibility(View.GONE);
+        closeAlertButton.setVisibility(View.GONE);
 
     }
 
