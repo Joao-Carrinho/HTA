@@ -1,5 +1,6 @@
 package com.example.hta;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -38,12 +43,18 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberViewHo
         holder.textViewBpm.setText(String.valueOf(currentNumber.getBpm()));
 
         // Split timestamp string into date and time
-        String[] dateTimeParts = currentNumber.getTimestamp().split(" ");
-        if (dateTimeParts.length == 2) {
-            holder.textViewDate.setText(dateTimeParts[0]);  // Display date
-            holder.textViewTime.setText(dateTimeParts[1]);  // Display time
-        } else {
-            holder.textViewTime.setText(currentNumber.getTimestamp());
+        String utc = currentNumber.getTimestamp();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            try {
+                ZonedDateTime localTime = Instant.parse(utc).atZone(ZoneId.systemDefault());
+                String date = localTime.toLocalDate().format(DateTimeFormatter.ofPattern("dd-MM-yy"));
+                String time = localTime.toLocalTime().format(DateTimeFormatter.ofPattern("HH:mm"));
+                holder.textViewDate.setText(date);
+                holder.textViewTime.setText(time);
+            } catch (Exception e) {
+                holder.textViewDate.setText("");
+                holder.textViewTime.setText("");
+            }
         }
 
         // Display averages only on the first row (position 0)
@@ -68,16 +79,12 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberViewHo
     }
 
     public void setNumbers(List<NumberEntity> numbers) {
-        // Sort the list of `NumberEntity` by year > month > day
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy HH:mm", Locale.getDefault());
-
         Collections.sort(numbers, new Comparator<NumberEntity>() {
             @Override
             public int compare(NumberEntity n1, NumberEntity n2) {
                 try {
-                    return dateFormat.parse(n1.getTimestamp()).compareTo(dateFormat.parse(n2.getTimestamp()));
-                } catch (ParseException e) {
-                    e.printStackTrace();
+                    return Instant.parse(n1.getTimestamp()).compareTo(Instant.parse(n2.getTimestamp()));
+                } catch (Exception e) {
                     return 0;
                 }
             }
@@ -104,6 +111,20 @@ public class TableAdapter extends RecyclerView.Adapter<TableAdapter.NumberViewHo
             averageMax = totalMax / numbers.size();
             averageBpm = totalBpm / numbers.size();
         }
+
+    }
+
+    public float getAverageMin() {
+        return averageMin;
+    }
+    public float getAverageMax() {
+        return averageMax;
+    }
+    public float getAverageBpm() {
+        return averageBpm;
+    }
+    public List<NumberEntity> getNumbers() {
+        return numbers;
     }
 
     static class NumberViewHolder extends RecyclerView.ViewHolder {

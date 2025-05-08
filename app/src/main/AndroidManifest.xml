@@ -26,6 +26,13 @@
 
         <receiver android:name=".AlarmReceiver" />
 
+        <receiver android:name=".TimeZoneHandler"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+            </intent-filter>
+        </receiver>
+
 
         <activity
             android:name=".MainActivity"
